@@ -35,7 +35,6 @@ option_quit_or_continue() {
             break
         elif [[ "${line:0:1}" == "c" ]]; then
             i=0
-            clear
             break
         else
             tput civis
@@ -51,8 +50,7 @@ main() {
     
     i=0
     while [[ "${i}" -eq 0 ]]; do
-        clear
-        
+
         printf "\e[1m\n**%s\n\e[0m" "Uptime"
         printf "%90s\n" " "  | tr ' ' '-'
         uptime
