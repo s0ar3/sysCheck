@@ -23,7 +23,7 @@ temperature() {
     done
 }
 
-option() {
+option_quit_or_continue() {
     position_line=$(($(cursorPosition | cut -f 1 -d " ")-3))
     position_col=$(cursorPosition | cut -f 2 -d " ")
 
@@ -51,7 +51,8 @@ main() {
     
     i=0
     while [[ "${i}" -eq 0 ]]; do
-
+        clear
+        
         printf "\e[1m\n**%s\n\e[0m" "Uptime"
         printf "%90s\n" " "  | tr ' ' '-'
         uptime
@@ -83,8 +84,9 @@ main() {
         printf "%90s\n" " " | tr ' ' '-'
         iostat
 
-        option
+        option_quit_or_continue
     done
+
 }
 
 main
