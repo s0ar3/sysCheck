@@ -74,7 +74,14 @@ main() {
         printf "\e[1m**%s\n\e[0m" "Top 10 processes with high CPU utilization"
         printf "%90s\n" " " | tr ' ' '-'
         top -b -n 1 | head -n 20
+
+        printf "\e[1m\n**%s\n\e[0m" "VMstats"
         printf "%90s\n" " " | tr ' ' '-'
+        vmstat
+
+        printf "\e[1m\n**%s\n\e[0m" "I/Ostats"
+        printf "%90s\n" " " | tr ' ' '-'
+        iostat
 
         option
     done
