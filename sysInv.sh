@@ -1,12 +1,12 @@
 #!/bin/bash
 
-cursorPosition() {
+get_cursorPosition() {
     local position
     IFS='[;' read -p $'\e[6n' -d R -a position -rs
     printf "%s\n" "${position[1]} ${position[2]}"
 }
 
-temperature() {
+get_temperature() {
     local temp_files="/sys/class/thermal/thermal_zone*"
     local -A allTemp
     
@@ -24,8 +24,8 @@ temperature() {
 }
 
 option_quit_or_continue() {
-    position_line=$(($(cursorPosition | cut -f 1 -d " ")-3))
-    position_col=$(cursorPosition | cut -f 2 -d " ")
+    position_line=$(($(get_cursorPosition | cut -f 1 -d " ")-3))
+    position_col=$(get_cursorPosition | cut -f 2 -d " ")
 
     while read -p "*Type q/quit or c/ontinue: " line; do
         line="${line,,}"
@@ -67,7 +67,7 @@ main() {
 
         printf "\e[1m\n**%s\n\e[0m" "Current temperature"
         printf "%90s\n" " " | tr ' ' '-'
-        temperature
+        get_temperature
         
         printf "\n"
         printf "\e[1m**%s\n\e[0m" "Top 10 processes with high CPU utilization"
