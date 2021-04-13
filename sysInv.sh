@@ -1,10 +1,10 @@
 #!/bin/bash
 
-get_cursorPosition() {
-    local position
-    IFS='[;' read -p $'\e[6n' -d R -a position -rs
-    printf "%s\n" "${position[1]} ${position[2]}"
-}
+#get_cursorPosition() {
+#    local position
+#    IFS='[;' read -p $'\e[6n' -d R -a position -rs
+#    printf "%s\n" "${position[1]} ${position[2]}"
+#}
 
 get_temperature() {
     local temp_files="/sys/class/thermal/thermal_zone*"
@@ -24,8 +24,8 @@ get_temperature() {
 }
 
 option_quit_or_continue() {
-    position_line=$(($(get_cursorPosition | cut -f 1 -d " ")-3))
-    position_col=$(get_cursorPosition | cut -f 2 -d " ")
+    #position_line=$(($(get_cursorPosition | cut -f 1 -d " ")-3))
+    #position_col=$(get_cursorPosition | cut -f 2 -d " ")
 
     while read -p "*Type q/quit or c/ontinue: " line; do
         line="${line,,}"
@@ -40,7 +40,7 @@ option_quit_or_continue() {
             tput civis
             printf "\e[31m\n%s\e[0m" "You need to enter only q/quit or c/continue..."
             sleep 1
-            tput cup "${position_line}" "((${position_col}-1))"; tput ed; tput cnorm
+            #tput cup "${position_line}" "((${position_col}-1))"; tput ed; tput cnorm
             continue   
         fi
     done
