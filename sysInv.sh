@@ -73,6 +73,11 @@ main() {
         printf "%90s\n" " " | tr ' ' '-'
         iostat
 
+        printf "\e[1m**%s\n\e[0m" "System Activity Information"
+        printf "%90s\n" " " | tr ' ' '-'
+        sar
+
+        printf "\n"
         option_quit_or_continue
     done
 
