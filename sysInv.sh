@@ -54,7 +54,7 @@ main() {
         printf "%90s\n" " " | tr ' ' '-'
         df -hT
         printf "%90s\n" " " | tr ' ' '-'
-        df -iTh
+        df -iT
 
         printf "\e[1m\n**%s\n\e[0m" "Current temperature"
         printf "%90s\n" " " | tr ' ' '-'
