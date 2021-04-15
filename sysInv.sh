@@ -30,8 +30,9 @@ option_quit_or_continue() {
             break
         else
             tput civis
-            printf "\e[31m\n%s\e[0m" "You need to enter only q/quit or c/continue..."
+            printf "\e[31m\n%s\e[0m\n\n" "You need to enter only q/quit or c/continue..."
             sleep 1
+            tput cnorm
             continue   
         fi
     done
